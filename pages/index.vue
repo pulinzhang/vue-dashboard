@@ -13,19 +13,19 @@
           
           <!-- Summary Cards -->
           <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-            <div class="bg-blue-50 rounded-lg p-4 border border-blue-100">
+            <div class="bg-blue-50 rounded-lg p-4 border border-gray-200">
               <h3 class="text-sm font-medium text-blue-700 mb-1">Matched Triplets</h3>
               <p class="text-2xl font-bold text-blue-900">{{ matchingResults?.matchedTriplets.length || 0 }}</p>
               <p class="text-sm text-blue-600 mt-1">Total successful matches</p>
             </div>
             
-            <div class="bg-green-50 rounded-lg p-4 border border-green-100">
+            <div class="bg-green-50 rounded-lg p-4 border border-gray-200">
               <h3 class="text-sm font-medium text-green-700 mb-1">Unmatched Singles</h3>
               <p class="text-2xl font-bold text-green-900">{{ matchingResults?.unmatchedSingles.length || 0 }}</p>
               <p class="text-sm text-green-600 mt-1">Remaining singles</p>
             </div>
             
-            <div class="bg-purple-50 rounded-lg p-4 border border-purple-100">
+            <div class="bg-purple-50 rounded-lg p-4 border border-gray-200">
               <h3 class="text-sm font-medium text-purple-700 mb-1">Unmatched Pairs</h3>
               <p class="text-2xl font-bold text-purple-900">{{ matchingResults?.unmatchedPairs.length || 0 }}</p>
               <p class="text-sm text-purple-600 mt-1">Remaining pairs</p>
@@ -35,27 +35,27 @@
           <!-- Matched Triplets -->
           <div class="mb-8">
             <h3 class="text-lg font-semibold text-gray-900 mb-4">Matched Triplets</h3>
-            <div class="overflow-x-auto rounded-lg border-4 border-gray-400 shadow-lg">
+            <div class="overflow-x-auto rounded-lg border border-gray-200 shadow-sm">
               <table class="min-w-full divide-y divide-gray-300">
-                <thead class="bg-gray-200">
+                <thead class="bg-gray-50">
                   <tr>
-                    <th scope="col" class="px-6 py-4 text-left text-xs font-bold text-gray-800 uppercase tracking-wider border-b-4 border-gray-400 border-r-4 border-gray-400">Match #</th>
-                    <th scope="col" class="px-6 py-4 text-left text-xs font-bold text-gray-800 uppercase tracking-wider border-b-4 border-gray-400 border-r-4 border-gray-400">Original ID</th>
-                    <th scope="col" class="px-6 py-4 text-left text-xs font-bold text-gray-800 uppercase tracking-wider border-b-4 border-gray-400 border-r-4 border-gray-400">Single</th>
-                    <th scope="col" class="px-6 py-4 text-left text-xs font-bold text-gray-800 uppercase tracking-wider border-b-4 border-gray-400 border-r-4 border-gray-400">Pair</th>
-                    <th scope="col" class="px-6 py-4 text-left text-xs font-bold text-gray-800 uppercase tracking-wider border-b-4 border-gray-400">Pair Members</th>
+                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider border-b border-gray-200 border-r border-gray-200">Match #</th>
+                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider border-b border-gray-200 border-r border-gray-200">Original ID</th>
+                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider border-b border-gray-200 border-r border-gray-200">Single</th>
+                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider border-b border-gray-200 border-r border-gray-200">Pair</th>
+                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider border-b border-gray-200">Pair Members</th>
                   </tr>
                 </thead>
-                <tbody class="bg-white divide-y divide-gray-300">
+                <tbody class="bg-white divide-y divide-gray-200">
                   <tr v-for="(match, index) in matchingResults?.matchedTriplets" :key="index" 
                       class="hover:bg-gray-50 transition-colors">
-                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 border-r-4 border-gray-400">
+                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 border-r border-gray-200">
                       {{ index + 1 }}
                     </td>
-                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 border-r-4 border-gray-400">
+                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 border-r border-gray-200">
                       {{ match.originalTripletId }}
                     </td>
-                    <td class="px-6 py-4 whitespace-nowrap border-r-4 border-gray-400">
+                    <td class="px-6 py-4 whitespace-nowrap border-r border-gray-200">
                       <div class="text-sm text-gray-900">ID: {{ match.newSingle.id }}</div>
                       <div class="text-sm text-gray-500">
                         <span :class="{
@@ -68,7 +68,7 @@
                         | Score: {{ match.newSingle.score }}
                       </div>
                     </td>
-                    <td class="px-6 py-4 whitespace-nowrap border-r-4 border-gray-400">
+                    <td class="px-6 py-4 whitespace-nowrap border-r border-gray-200">
                       <div class="text-sm text-gray-900">ID: {{ match.newPair.id }}</div>
                       <div class="text-sm text-gray-500">Score: {{ match.newPair.pairScore }}</div>
                     </td>
@@ -97,24 +97,24 @@
           <!-- Unmatched Sections -->
           <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
             <!-- Unmatched Singles -->
-            <div class="bg-gray-50 rounded-lg p-4 border-4 border-gray-400 shadow-lg">
+            <div class="bg-gray-50 rounded-lg p-4 border border-gray-200 shadow-sm">
               <h3 class="text-lg font-semibold text-gray-900 mb-4">Sample Unmatched Singles</h3>
               <div class="overflow-x-auto">
                 <table class="min-w-full divide-y divide-gray-300">
-                  <thead class="bg-gray-200">
+                  <thead class="bg-gray-50">
                     <tr>
-                      <th scope="col" class="px-6 py-4 text-left text-xs font-bold text-gray-800 uppercase tracking-wider border-b-4 border-gray-400 border-r-4 border-gray-400">ID</th>
-                      <th scope="col" class="px-6 py-4 text-left text-xs font-bold text-gray-800 uppercase tracking-wider border-b-4 border-gray-400 border-r-4 border-gray-400">Gender</th>
-                      <th scope="col" class="px-6 py-4 text-left text-xs font-bold text-gray-800 uppercase tracking-wider border-b-4 border-gray-400">Score</th>
+                      <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider border-b border-gray-200 border-r border-gray-200">ID</th>
+                      <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider border-b border-gray-200 border-r border-gray-200">Gender</th>
+                      <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider border-b border-gray-200">Score</th>
                     </tr>
                   </thead>
-                  <tbody class="bg-white divide-y divide-gray-300">
+                  <tbody class="bg-white divide-y divide-gray-200">
                     <tr v-for="single in matchingResults?.unmatchedSingles.slice(0, 5)" :key="single.id"
                         class="hover:bg-gray-50 transition-colors">
-                      <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 border-r-4 border-gray-400">
+                      <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 border-r border-gray-200">
                         {{ single.id }}
                       </td>
-                      <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 border-r-4 border-gray-400">
+                      <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 border-r border-gray-200">
                         <span :class="{
                           'px-2 py-0.5 rounded-full text-xs font-medium': true,
                           'bg-blue-100 text-blue-800': single.gender === 0,
@@ -133,24 +133,24 @@
             </div>
 
             <!-- Unmatched Pairs -->
-            <div class="bg-gray-50 rounded-lg p-4 border-4 border-gray-400 shadow-lg">
+            <div class="bg-gray-50 rounded-lg p-4 border border-gray-200 shadow-sm">
               <h3 class="text-lg font-semibold text-gray-900 mb-4">Sample Unmatched Pairs</h3>
               <div class="overflow-x-auto">
                 <table class="min-w-full divide-y divide-gray-300">
-                  <thead class="bg-gray-200">
+                  <thead class="bg-gray-50">
                     <tr>
-                      <th scope="col" class="px-6 py-4 text-left text-xs font-bold text-gray-800 uppercase tracking-wider border-b-4 border-gray-400 border-r-4 border-gray-400">Pair ID</th>
-                      <th scope="col" class="px-6 py-4 text-left text-xs font-bold text-gray-800 uppercase tracking-wider border-b-4 border-gray-400 border-r-4 border-gray-400">Pair Score</th>
-                      <th scope="col" class="px-6 py-4 text-left text-xs font-bold text-gray-800 uppercase tracking-wider border-b-4 border-gray-400">Members</th>
+                      <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider border-b border-gray-200 border-r border-gray-200">Pair ID</th>
+                      <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider border-b border-gray-200 border-r border-gray-200">Pair Score</th>
+                      <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider border-b border-gray-200">Members</th>
                     </tr>
                   </thead>
-                  <tbody class="bg-white divide-y divide-gray-300">
+                  <tbody class="bg-white divide-y divide-gray-200">
                     <tr v-for="pair in matchingResults?.unmatchedPairs.slice(0, 5)" :key="pair.id"
                         class="hover:bg-gray-50 transition-colors">
-                      <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 border-r-4 border-gray-400">
+                      <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 border-r border-gray-200">
                         {{ pair.id }}
                       </td>
-                      <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 border-r-4 border-gray-400">
+                      <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 border-r border-gray-200">
                         {{ pair.pairScore }}
                       </td>
                       <td class="px-6 py-4">
