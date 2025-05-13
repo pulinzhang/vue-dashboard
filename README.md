@@ -1,105 +1,111 @@
-# Vue Dashboard
+# Vue Dashboard with Matching Algorithm
 
-A data visualization dashboard project built with Nuxt 3 and D3.js, showcasing budget and sales data analysis.
+A Vue.js dashboard application featuring budget analysis charts and an advanced matching algorithm.
 
 ## Features
 
-- Built with Nuxt 3 framework
-- Data visualization using D3.js
-- Responsive design
-- Interactive charts
-- Mock data generation
+### 1. Budget Analysis
+- Interactive budget comparison chart using D3.js
+- Monthly budget vs. actual spending visualization
+- Responsive design for all screen sizes
 
-## Charts
+### 2. Sales Distribution
+- Regional sales distribution pie chart
+- Interactive data visualization
+- Real-time data updates
 
-1. **Budget vs Actual Sales Comparison**
-   - Displays monthly budget and actual sales data for 2024
-   - Includes data point markers and specific values
-   - Uses different colors to distinguish budget and actual sales
+### 3. Matching Algorithm (matchTriplets)
+The application includes an advanced matching algorithm that matches triplets with new participants based on specific criteria:
 
-2. **Regional Sales Distribution Pie Chart**
-   - Shows sales distribution across different regions
-   - Includes hover effects
-   - Displays specific sales amounts
-   - Uses guide lines to connect labels
+#### Algorithm Features
+- Matches individuals and pairs based on gender and score compatibility
+- Handles 100 original triplets and 100 new participants
+- Supports mixed-gender pair combinations
+- Provides detailed matching statistics and results
 
-## Tech Stack
+#### Data Structure
+```javascript
+// Original Triplet Structure
+{
+    id: string,
+    individual: {
+        id: string,
+        gender: number, // 0 for male, 1 for female
+        score: number
+    },
+    pair: {
+        score: number,
+        genderCombination: string
+    }
+}
 
-- Nuxt 3
+// New Participant Structure
+{
+    singles: Array<{
+        id: string,
+        gender: number,
+        score: number
+    }>,
+    pairs: Array<{
+        id: string,
+        members: Array<{
+            id: string,
+            gender: number,
+            score: number
+        }>,
+        pairScore: number
+    }>
+}
+```
+
+#### Usage
+```javascript
+import { matchTriplets, sampleData } from './utils/matchTripletsUtil';
+
+// Run the matching algorithm
+const result = matchTriplets(sampleData.originalTriplets, sampleData.newParticipants);
+
+// Result structure
+{
+    matchedTriplets: Array<{
+        originalTripletId: string,
+        newSingle: Individual,
+        newPair: Pair
+    }>,
+    unmatchedSingles: Array<Individual>,
+    unmatchedPairs: Array<Pair>
+}
+```
+
+## Project Setup
+
+```bash
+# Install dependencies
+npm install
+
+# Start development server
+npm run dev
+
+# Build for production
+npm run build
+
+# Preview production build
+npm run preview
+```
+
+## Deployment
+The application is configured for deployment on Cloudflare Pages. The build process automatically generates the necessary configuration files.
+
+### Build Output
+- Production build: `.output/public`
+- Cloudflare Pages configuration: `_routes.json`
+
+## Technologies Used
 - Vue 3
-- TypeScript
+- Nuxt 3
 - D3.js
-- Faker.js (for mock data generation)
-
-## Getting Started
-
-### Install Dependencies
-
-```bash
-pnpm install
-```
-
-### Run Development Server
-
-```bash
-pnpm dev
-```
-
-### Build for Production
-
-```bash
-pnpm build
-```
-
-### Preview Production Build
-
-```bash
-pnpm preview
-```
-
-## Project Structure
-
-```
-├── components/          # Vue components
-│   ├── BudgetChart.vue  # Budget comparison chart
-│   └── RegionPieChart.vue # Regional distribution pie chart
-├── utils/              # Utility functions
-│   └── mockData.ts     # Mock data generation
-├── pages/              # Page components
-│   └── index.vue       # Main page
-└── public/             # Static assets
-```
-
-## Data Description
-
-The project uses mock data, including:
-
-1. Monthly Data
-   - Budget amounts
-   - Actual sales amounts
-
-2. Regional Data
-   - North America
-   - Europe
-   - Asia Pacific
-   - Latin America
-   - Middle East & Africa
-
-## Development Notes
-
-- TypeScript for type safety
-- Component-based design for maintainability and scalability
-- Responsive layout for different screen sizes
-- Professional data visualization using D3.js
-
-## Contributing
-
-1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
+- Tailwind CSS
+- Cloudflare Pages
 
 ## License
-
-MIT License
+MIT
