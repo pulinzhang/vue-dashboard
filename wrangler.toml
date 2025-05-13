@@ -1,0 +1,23 @@
+name = "vue-dashboard"
+compatibility_date = "2024-04-03"
+compatibility_flags = ["nodejs_compat"]
+
+[site]
+bucket = ".output/public"
+
+[build]
+command = "npm run build"
+upload.format = "service-worker"
+
+[env.production]
+workers_dev = false
+route = "vue-dashboard-6v5.pages.dev"
+zone_id = "your-zone-id"  # 需要替换为你的 Cloudflare Zone ID 
+# Pages specific configuration
+pages_build_output_dir = ".output/public" 
+
+[env.preview]
+workers_dev = true 
+
+# Pages specific configuration
+pages_build_output_dir = ".output/public" 
