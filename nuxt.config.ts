@@ -1,7 +1,7 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
     devtools: {enabled: true},
-    modules: ['@nuxtjs/tailwindcss'],
+    modules: ['@nuxtjs/tailwindcss', 'vuetify-nuxt-module'],
     // Defaults options
     tailwindcss: {
         cssPath: ['~/assets/css/tailwind.css', {injectPosition: 'last'}],
@@ -11,6 +11,14 @@ export default defineNuxtConfig({
         },
         config: {},
         viewer: true,
+    },
+    vuetify: {
+        moduleOptions: {
+            /* module specific options */
+        },
+        vuetifyOptions: {
+            /* vuetify options */
+        }
     },
     postcss: {
         plugins: {

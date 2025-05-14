@@ -1,6 +1,22 @@
 <template>
   <div class="min-h-screen bg-gray-50">
     <div class="container">
+      <div class="text-center">
+        <v-btn
+            append-icon="mdi-account-circle"
+            prepend-icon="mdi-check-circle"
+        >
+          <template v-slot:prepend>
+            <v-icon color="success"></v-icon>
+          </template>
+
+          Button
+
+          <template v-slot:append>
+            <v-icon color="warning"></v-icon>
+          </template>
+        </v-btn>
+      </div>
       <h1>Welcome to Vue Dashboard</h1>
       <p>2024 Budget and Sales Analysis</p>
       <BudgetChart />
